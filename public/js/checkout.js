@@ -195,20 +195,21 @@ async function handlePayment(e) {
 
   try {
     if (stripe && elements) {
-      // Zapisujemy stan na wypadek przekierowania
-      sessionStorage.setItem('pendingOrderCustomer', JSON.stringify(customerData));
-      sessionStorage.setItem('pendingOrderItems', JSON.stringify(orderItems));
-      sessionStorage.setItem('pendingOrderId', currentOrderId);
-      sessionStorage.setItem('pendingOrderTotal', total);
+      // Zapisujemy stan na wypadek przekierowania w localStorage (lepsze wsparcie mobile)
+      localStorage.setItem('pendingOrderCustomer', JSON.stringify(customerData));
+      localStorage.setItem('pendingOrderItems', JSON.stringify(orderItems));
+      localStorage.setItem('pendingOrderId', currentOrderId);
+      localStorage.setItem('pendingOrderTotal', total);
 
-      const { error } = await stripe.confirmPayment({
+      const { error, paymentIntent } = await stripe.confirmPayment({
         elements,
         confirmParams: {
           return_url: window.location.href.split('?')[0],
           payment_method_data: {
             billing_details: { name, email, phone }
           }
-        }
+        },
+        redirect: 'if_required'
       });
 
       if (error) {
@@ -217,6 +218,20 @@ async function handlePayment(e) {
         } else {
           throw new Error('Wystąpił nieoczekiwany błąd. Spróbuj ponownie.');
         }
+      } else if (paymentIntent && (paymentIntent.status === 'succeeded' || paymentIntent.status === 'processing')) {
+        // Płatność udana bez przeładowania strony! Natychmiastowy sukces.
+        await fetch('/api/confirm-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            orderId: currentOrderId,
+            paymentIntentId: paymentIntent.id,
+            items: orderItems,
+            customer: customerData,
+            total: total
+          })
+        }).catch(() => {});
+        showSuccess(currentOrderId);
       }
     } else {
       // Tryb DEMO
@@ -247,11 +262,11 @@ async function checkPaymentStatus() {
   const paymentIntentId = urlParams.get('payment_intent');
   const redirectStatus = urlParams.get('redirect_status');
 
-  if (paymentIntentId && redirectStatus === 'succeeded') {
-    const customerDataStr = sessionStorage.getItem('pendingOrderCustomer');
-    const orderItemsStr = sessionStorage.getItem('pendingOrderItems');
-    const orderId = sessionStorage.getItem('pendingOrderId');
-    const total = sessionStorage.getItem('pendingOrderTotal');
+  if (paymentIntentId && (redirectStatus === 'succeeded' || redirectStatus === 'processing')) {
+    const customerDataStr = localStorage.getItem('pendingOrderCustomer');
+    const orderItemsStr = localStorage.getItem('pendingOrderItems');
+    const orderId = localStorage.getItem('pendingOrderId');
+    const total = localStorage.getItem('pendingOrderTotal');
 
     if (customerDataStr && orderItemsStr) {
       try {
@@ -272,10 +287,10 @@ async function checkPaymentStatus() {
       } catch (err) {
         console.error('Błąd potwierdzania po powrocie ze Stripe:', err);
       } finally {
-        sessionStorage.removeItem('pendingOrderCustomer');
-        sessionStorage.removeItem('pendingOrderItems');
-        sessionStorage.removeItem('pendingOrderId');
-        sessionStorage.removeItem('pendingOrderTotal');
+        localStorage.removeItem('pendingOrderCustomer');
+        localStorage.removeItem('pendingOrderItems');
+        localStorage.removeItem('pendingOrderId');
+        localStorage.removeItem('pendingOrderTotal');
       }
     }
   }
