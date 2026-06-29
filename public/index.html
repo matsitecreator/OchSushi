@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCH! SUSHI – Kuchnia Japońska | Zamów online</title>
+  <meta name="description" content="OCH! SUSHI – Odkryj prawdziwą kuchnię japońską. Świeże sushi, maki, nigiri i zestawy z dostawą. Zamów online!">
+  <meta name="keywords" content="sushi, kuchnia japońska, zamów online, dostawa, maki, nigiri, OCH SUSHI">
+  <meta property="og:title" content="OCH! SUSHI – Kuchnia Japońska | Zamów online">
+  <meta property="og:description" content="Odkryj prawdziwą kuchnię japońską. Świeże sushi z dostawą pod Twoje drzwi.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/logo.png">
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" class="navbar">
+    <div class="container navbar__inner">
+      <a href="#hero" class="navbar__logo"><img src="images/logo.png" alt="OCH! SUSHI" class="navbar__logo-img"></a>
+      <ul class="navbar__links" id="nav-links">
+        <li><a href="#hero" class="navbar__link">Start</a></li>
+        <li><a href="#menu" class="navbar__link">Menu</a></li>
+        <li><a href="#about" class="navbar__link">O nas</a></li>
+        <li><a href="#gallery" class="navbar__link">Galeria</a></li>
+        <li><a href="#contact" class="navbar__link">Kontakt</a></li>
+      </ul>
+      <div class="navbar__actions">
+        <button class="navbar__cart-btn" id="cart-toggle" aria-label="Koszyk">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="navbar__cart-badge" id="cart-badge">0</span>
+        </button>
+        <a href="#menu" class="btn btn--primary navbar__cta">Zamów online</a>
+        <button class="navbar__hamburger" id="hamburger" aria-label="Menu nawigacji">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="hero" class="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__content container">
+      <img src="images/logo.png" alt="OCH! SUSHI" class="hero__logo animate-on-scroll">
+      <h1 class="hero__title animate-on-scroll">Niezapomniane smaki<br>w Twoim mieście</h1>
+      <p class="hero__desc animate-on-scroll">Nasze sushi to świeżość, pasja i najwyższa jakość składników. Zasmakuj Japonii bez wychodzenia z domu.</p>
+      <a href="#menu" class="btn btn--primary btn--lg hero__btn animate-on-scroll">Zamów online</a>
+    </div>
+    <div class="hero__scroll-indicator">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+  </section>
+
+  <!-- ========== INFO BOXES ========== -->
+  <section id="info" class="info-section">
+    <div class="container">
+      <div class="info-grid">
+        <div class="info-card glass animate-on-scroll">
+          <div class="info-card__icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 class="info-card__title">Gdzie jesteśmy</h3>
+          <p class="info-card__text">OCH! SUSHI<br>ul. Częstochowska<br>Warszawa</p>
+        </div>
+        <div class="info-card glass animate-on-scroll">
+          <div class="info-card__icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3 class="info-card__title">Zadzwoń do nas</h3>
+          <p class="info-card__text"><a href="tel:+48453338734" class="info-card__link">453 338 734</a></p>
+        </div>
+        <div class="info-card glass animate-on-scroll">
+          <div class="info-card__icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="info-card__title">Godziny otwarcia</h3>
+          <p class="info-card__text">Pon – Czw: 12:00 – 21:00<br>Pt – Sob: 12:00 – 22:00<br>Niedziela: 12:00 – 21:00</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MENU ========== -->
+  <section id="menu" class="menu-section">
+    <div class="container">
+      <header class="section-header animate-on-scroll">
+        <span class="section-header__sup">Głodny? Zobacz</span>
+        <h2 class="section-header__title">Nasza oferta</h2>
+      </header>
+      <div class="menu-filters animate-on-scroll" id="menu-filters"></div>
+      <div class="menu-grid" id="menu-grid"></div>
+      <div class="menu-expand animate-on-scroll" id="menu-expand" style="text-align: center; margin-top: 40px; display: none;">
+        <button id="menu-expand-btn" class="btn btn--outline btn--lg">Rozwiń całe menu</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-images animate-on-scroll">
+          <img src="images/lokal-witryna.png" alt="Lokal OCH! SUSHI" class="about-img about-img--main" loading="lazy">
+          <img src="images/lokal-kuchnia.jpg" alt="Kuchnia OCH! SUSHI" class="about-img about-img--accent" loading="lazy">
+        </div>
+        <div class="about-content animate-on-scroll">
+          <span class="section-header__sup">Dowiedz się więcej</span>
+          <h2 class="section-header__title">O nas</h2>
+          <p class="about-text">OCH! SUSHI przeniesie Cię w niezapomniane smaki kuchni japońskiej. Nasi kucharze zaspokoją nawet najbardziej wymagających klientów.</p>
+          <p class="about-text">Starannie przygotowane sushi oraz dania kuchni japońskiej to to, w czym specjalizujemy się i pogłębiamy swoją wiedzę na co dzień.</p>
+          <p class="about-text">Mamy indywidualne podejście do klienta, dlatego oprócz zaproponowanej karty rozmawiamy z klientem o jego smakach i preferencjach, aby przygotować danie pod sprecyzowany gust.</p>
+          <a href="#menu" class="btn btn--primary">Sprawdź naszą ofertę</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== REVIEWS ========== -->
+  <section id="reviews" class="reviews-section">
+    <div class="container">
+      <header class="section-header animate-on-scroll">
+        <span class="section-header__sup">Sprawdź co mówią o nas</span>
+        <h2 class="section-header__title">Opinie klientów</h2>
+      </header>
+      <div class="reviews-grid" id="reviews-grid">
+        <div class="review-card glass animate-on-scroll">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Jak zawsze, przepyszne! Najlepsze sushi w okolicy, polecam każdemu.</p>
+          <p class="review-card__author">— Alona</p>
+        </div>
+        <div class="review-card glass animate-on-scroll">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Przepysznie jak zawsze! Zamawiam regularnie i nigdy się nie zawiodłam.</p>
+          <p class="review-card__author">— Patrycja</p>
+        </div>
+        <div class="review-card glass animate-on-scroll">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Smacznie i świeżo! Ogromne porcje i piękna prezentacja. 10/10!</p>
+          <p class="review-card__author">— Kinga</p>
+        </div>
+        <div class="review-card glass animate-on-scroll">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Bez zmian – najlepsze sushi! Dragon roll to absolutny hit.</p>
+          <p class="review-card__author">— Karolina</p>
+        </div>
+        <div class="review-card glass animate-on-scroll">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Wszystko pyszne i na czas – uwielbiam was! Obsługa na najwyższym poziomie.</p>
+          <p class="review-card__author">— Mateusz</p>
+        </div>
+        <div class="review-card glass animate-on-scroll">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Jak zawsze rewelacja! Polecam zestawy – świetny stosunek jakości do ceny.</p>
+          <p class="review-card__author">— Agnieszka</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <section id="gallery" class="gallery-section">
+    <div class="container">
+      <header class="section-header animate-on-scroll">
+        <span class="section-header__sup">Zobacz nasze</span>
+        <h2 class="section-header__title">Galeria</h2>
+      </header>
+      <div class="gallery-grid animate-on-scroll">
+        <div class="gallery-item" data-full="images/lokal-witryna.png"><img src="images/lokal-witryna.png" alt="Nasz lokal" loading="lazy"><div class="gallery-item__overlay"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+        <div class="gallery-item" data-full="images/lokal-kuchnia.jpg"><img src="images/lokal-kuchnia.jpg" alt="Nasza kuchnia" loading="lazy"><div class="gallery-item__overlay"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+        <div class="gallery-item" data-full="images/dish-california-dragon.png"><img src="images/dish-california-dragon.png" alt="California Dragon" loading="lazy"><div class="gallery-item__overlay"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+        <div class="gallery-item" data-full="images/dish-nashi-special.png"><img src="images/dish-nashi-special.png" alt="Nashi Special" loading="lazy"><div class="gallery-item__overlay"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+        <div class="gallery-item" data-full="images/dish-tamago-special.png"><img src="images/dish-tamago-special.png" alt="Tamago Special" loading="lazy"><div class="gallery-item__overlay"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+        <div class="gallery-item" data-full="images/dish-futo-tatar.png"><img src="images/dish-futo-tatar.png" alt="Futo Tatar" loading="lazy"><div class="gallery-item__overlay"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <header class="section-header animate-on-scroll">
+        <span class="section-header__sup">Masz pytania?</span>
+        <h2 class="section-header__title">Kontakt</h2>
+      </header>
+      <div class="contact-grid">
+        <div class="contact-info animate-on-scroll">
+          <div class="contact-info__item"><strong>Adres:</strong> ul. Częstochowska, Warszawa</div>
+          <div class="contact-info__item"><strong>Telefon:</strong> <a href="tel:+48453338734">453 338 734</a></div>
+          <div class="contact-info__item"><strong>Email:</strong> <a href="mailto:mateusz.powala00@gmail.com">mateusz.powala00@gmail.com</a></div>
+          <div class="contact-info__item"><strong>Godziny:</strong> Codziennie 12:00 – 21:00 (Pt-Sob do 22:00)</div>
+          <div class="contact-socials">
+            <a href="#" class="contact-social" aria-label="Facebook"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" class="contact-social" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+        <div class="contact-map animate-on-scroll">
+          <iframe src="https://maps.google.com/maps?q=ul.+Cz%C4%99stochowska,+Warszawa,+Polska&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="350" style="border:0;border-radius:12px;" allowfullscreen="" loading="lazy" title="Mapa OCH! SUSHI"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <img src="images/logo.png" alt="OCH! SUSHI" class="footer__logo-img">
+          <p class="footer__desc">Kuchnia Japońska – świeże sushi z dostawą w Warszawie.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer__heading">Nawigacja</h4>
+          <a href="#menu" class="footer__link">Menu</a>
+          <a href="#about" class="footer__link">O nas</a>
+          <a href="#gallery" class="footer__link">Galeria</a>
+          <a href="#contact" class="footer__link">Kontakt</a>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer__heading">Prawne</h4>
+          <a href="regulamin.html" class="footer__link">Regulamin</a>
+          <a href="polityka-prywatnosci.html" class="footer__link">Polityka prywatności</a>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer__heading">Kontakt</h4>
+          <p class="footer__text">ul. Częstochowska, Warszawa</p>
+          <p class="footer__text"><a href="tel:+48453338734">453 338 734</a></p>
+          <p class="footer__text"><a href="mailto:mateusz.powala00@gmail.com">mateusz.powala00@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 OCH! SUSHI – Wszelkie prawa zastrzeżone.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== MOBILE FLOATING CART BUTTON ========== -->
+  <button class="mobile-cart-fab" id="mobile-cart-fab" aria-label="Otwórz koszyk">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <span class="mobile-cart-fab__badge" id="mobile-cart-badge"></span>
+  </button>
+
+  <!-- ========== CART SIDEBAR ========== -->
+  <div class="cart-backdrop" id="cart-backdrop"></div>
+  <aside class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-sidebar__header">
+      <h3>Twój koszyk</h3>
+      <button class="cart-sidebar__close" id="cart-close" aria-label="Zamknij koszyk">&times;</button>
+    </div>
+    <div class="cart-sidebar__items" id="cart-items">
+      <p class="cart-sidebar__empty">Koszyk jest pusty</p>
+    </div>
+    <div class="cart-sidebar__footer" id="cart-footer" style="display:none;">
+      <div class="cart-sidebar__row"><span>Suma częściowa:</span><span id="cart-subtotal">0 PLN</span></div>
+      <div class="cart-sidebar__row"><span>Dostawa:</span><span id="cart-delivery">10 PLN</span></div>
+      <div class="cart-sidebar__row cart-sidebar__row--total"><span>Razem:</span><span id="cart-total">0 PLN</span></div>
+      <p class="cart-sidebar__delivery-note">Darmowa dostawa od 100 PLN!</p>
+      <button class="btn btn--primary btn--full" id="checkout-btn">Zamów i zapłać</button>
+    </div>
+  </aside>
+
+  <!-- ========== CHECKOUT MODAL ========== -->
+  <div class="modal-backdrop" id="checkout-backdrop" style="display:none;"></div>
+  <div class="checkout-modal" id="checkout-modal" style="display:none;">
+    <div class="checkout-modal__header">
+      <h3>Dane zamówienia</h3>
+      <button class="checkout-modal__close" id="checkout-close" aria-label="Zamknij">&times;</button>
+    </div>
+    <form id="checkout-form" class="checkout-form">
+      <div class="form-group">
+        <label for="checkout-name">Imię i nazwisko *</label>
+        <input type="text" id="checkout-name" name="name" required placeholder="Jan Kowalski">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="checkout-phone">Telefon *</label>
+          <input type="tel" id="checkout-phone" name="phone" required placeholder="789 123 456">
+        </div>
+        <div class="form-group">
+          <label for="checkout-email">Email *</label>
+          <input type="email" id="checkout-email" name="email" required placeholder="jan@email.pl">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Sposób odbioru</label>
+        <div class="form-radio-group">
+          <label class="form-radio"><input type="radio" name="deliveryMethod" value="delivery" checked> Dostawa</label>
+          <label class="form-radio"><input type="radio" name="deliveryMethod" value="pickup"> Odbiór osobisty</label>
+        </div>
+      </div>
+      <div class="form-group" id="address-group">
+        <label for="checkout-address">Adres dostawy *</label>
+        <input type="text" id="checkout-address" name="address" placeholder="ul. Przykładowa 10/5, Warszawa">
+      </div>
+      <div class="form-group">
+        <label for="checkout-notes">Uwagi do zamówienia</label>
+        <textarea id="checkout-notes" name="notes" rows="3" placeholder="Np. bez wasabi, piętro 3..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Metoda płatności</label>
+        <div id="card-element" class="stripe-card-element"></div>
+        <div id="card-errors" class="form-error" role="alert"></div>
+      </div>
+      <div class="checkout-summary">
+        <div class="checkout-summary__row"><span>Suma:</span><span id="checkout-total">0 PLN</span></div>
+      </div>
+      <div class="checkout-legal">
+        <label class="form-checkbox">
+          <input type="checkbox" id="checkout-terms" required>
+          Akceptuję <a href="regulamin.html" target="_blank">Regulamin</a> i <a href="polityka-prywatnosci.html" target="_blank">Politykę prywatności</a> *
+        </label>
+      </div>
+      <button type="submit" class="btn btn--primary btn--full btn--lg" id="pay-btn">
+        <span id="pay-btn-text">Zapłać</span>
+        <span id="pay-btn-spinner" class="spinner" style="display:none;"></span>
+      </button>
+    </form>
+  </div>
+
+  <!-- ========== LIGHTBOX ========== -->
+  <div class="lightbox" id="lightbox" style="display:none;">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Zamknij">&times;</button>
+    <div class="lightbox__content">
+      <img class="lightbox__img" id="lightbox-img" src="" alt="Podgląd zdjęcia">
+    </div>
+  </div>
+
+  <!-- ========== COOKIE BANNER ========== -->
+  <div class="cookie-banner" id="cookie-banner" style="display:none;">
+    <div class="container cookie-banner__inner">
+      <p>Ta strona wykorzystuje pliki cookies w celu zapewnienia najlepszej jakości usług. Korzystając ze strony, zgadzasz się na ich użycie. <a href="polityka-prywatnosci.html">Dowiedz się więcej</a></p>
+      <button class="btn btn--primary btn--sm" id="cookie-accept">Akceptuję</button>
+    </div>
+  </div>
+
+  <!-- ========== SUCCESS MODAL ========== -->
+  <div class="success-modal" id="success-modal" style="display:none;">
+    <div class="success-modal__content">
+      <div class="success-modal__icon">✓</div>
+      <h3>Zamówienie przyjęte!</h3>
+      <p>Dziękujemy za zamówienie. Potwierdzenie zostało wysłane na podany adres email.</p>
+      <p class="success-modal__order-id">Nr zamówienia: <strong id="success-order-id"></strong></p>
+      <button class="btn btn--primary" id="success-close">Zamknij</button>
+    </div>
+  </div>
+
+  <script src="js/menu-data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>
