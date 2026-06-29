@@ -101,7 +101,7 @@ router.post('/confirm-order', async (req, res) => {
     // Verify payment with Stripe (if configured)
     if (stripe && paymentIntentId && !paymentIntentId.startsWith('demo_')) {
       const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
-      if (paymentIntent.status !== 'succeeded') {
+      if (paymentIntent.status !== 'succeeded' && paymentIntent.status !== 'processing') {
         return res.status(400).json({ error: 'Płatność nie została zrealizowana.' });
       }
     }
