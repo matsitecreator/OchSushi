@@ -123,7 +123,7 @@ async function updatePaymentIntentAmount() {
   const checkoutTotal = document.getElementById('checkout-total');
   const payBtnText = document.getElementById('pay-btn-text');
   
-  Cart.updateCartUI(); 
+  Cart.render(); 
   const total = Cart.getTotal();
   if (checkoutTotal) checkoutTotal.textContent = total + ' PLN';
   if (payBtnText) payBtnText.textContent = `Zapłać ${total} PLN`;
