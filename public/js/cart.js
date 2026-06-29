@@ -48,6 +48,8 @@ window.Cart = {
   },
 
   getDeliveryFee() {
+    const pickupInput = document.querySelector('input[name="deliveryMethod"][value="pickup"]');
+    if (pickupInput && pickupInput.checked) return 0;
     return this.getSubtotal() >= 100 ? 0 : 10;
   },
 
